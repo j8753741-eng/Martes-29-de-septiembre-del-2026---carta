@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>29 de septiembre · Para Valeria</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root{
+      --night:#090713;
+      --violet:#211044;
+      --violet2:#5d2aa5;
+      --neon:#b56cff;
+      --soft:#eadcff;
+      --white:#fffaff;
+      --muted:#c9badb;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(181,108,255,.18), transparent 30%),
+        radial-gradient(circle at 20% 75%, rgba(93,42,165,.14), transparent 35%),
+        var(--night);
+      color:var(--white);
+      font-family:'Montserrat',sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* Pequeñas partículas flotantes */
+    .particles{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .particle{
+      position:absolute;
+      width:3px;
+      height:3px;
+      border-radius:50%;
+      background:#d9b9ff;
+      box-shadow:0 0 12px #b56cff;
+      opacity:.55;
+      animation:float 8s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1){left:12%;top:22%;animation-delay:0s}
+    .particle:nth-child(2){left:81%;top:18%;animation-delay:2s}
+    .particle:nth-child(3){left:24%;top:66%;animation-delay:4s}
+    .particle:nth-child(4){left:72%;top:73%;animation-delay:1s}
+    .particle:nth-child(5){left:48%;top:10%;animation-delay:3s}
+    .particle:nth-child(6){left:91%;top:51%;animation-delay:5s}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0);opacity:.3}
+      50%{transform:translateY(-22px);opacity:.85}
+    }
+
+    .page{
+      position:relative;
+      z-index:1;
+      width:min(720px,92%);
+      margin:auto;
+      padding:55px 0 40px;
+    }
+
+    /* Concepto: relicario de recuerdos */
+    .relicario{
+      position:relative;
+      padding:28px 20px 34px;
+      border:1px solid rgba(181,108,255,.35);
+      border-radius:32px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.055),rgba(181,108,255,.025)),
+        rgba(12,8,24,.82);
+      box-shadow:
+        0 0 35px rgba(139,67,255,.12),
+        inset 0 0 40px rgba(181,108,255,.035);
+      backdrop-filter:blur(10px);
+      animation:appear 1.3s ease both;
+    }
+
+    .relicario::before{
+      content:"";
+      position:absolute;
+      top:-7px;
+      left:50%;
+      transform:translateX(-50%);
+      width:70px;
+      height:14px;
+      border-radius:20px;
+      background:var(--violet2);
+      box-shadow:0 0 20px rgba(181,108,255,.55);
+    }
+
+    @keyframes appear{
+      from{opacity:0;transform:translateY(25px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .date{
+      text-align:center;
+      color:#cda8ff;
+      font-size:.7rem;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      animation:fade 1.5s ease both;
+    }
+
+    h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,8vw,3.5rem);
+      line-height:1.05;
+      text-align:center;
+      font-weight:600;
+      letter-spacing:1px;
+      color:#fff;
+      text-shadow:
+        0 0 8px rgba(181,108,255,.65),
+        0 0 28px rgba(181,108,255,.3);
+      margin-bottom:25px;
+    }
+
+    .dedication{
+      text-align:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.35rem;
+      color:var(--soft);
+      margin-bottom:30px;
+    }
+
+    .letter{
+      position:relative;
+      padding:28px 19px;
+      border-radius:22px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .letter p{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.28rem;
+      line-height:1.72;
+      color:#f7f0ff;
+      margin-bottom:22px;
+    }
+
+    .letter p:last-child{
+      margin-bottom:0;
+    }
+
+    .letter strong{
+      color:#fff;
+      font-weight:600;
+    }
+
+    .french{
+      color:#e5c8ff !important;
+      font-size:1.45rem !important;
+      text-align:center;
+      text-shadow:0 0 15px rgba(181,108,255,.35);
+    }
+
+    .finale{
+      margin-top:30px;
+      padding:25px 18px;
+      text-align:center;
+      border-radius:24px;
+      background:linear-gradient(135deg,rgba(83,35,143,.24),rgba(181,108,255,.07));
+      border:1px solid rgba(181,108,255,.32);
+      box-shadow:0 0 28px rgba(181,108,255,.12);
+      animation:pulse 4s ease-in-out infinite;
+    }
+
+    .finale p{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.32rem;
+      line-height:1.65;
+      color:#f7eaff;
+      margin-bottom:18px;
+    }
+
+    .finale .neon{
+      color:#c27aff;
+      font-weight:700;
+      letter-spacing:1px;
+      text-shadow:
+        0 0 5px #b56cff,
+        0 0 15px #9c4dff,
+        0 0 30px rgba(181,108,255,.8);
+    }
+
+    .finale .noah{
+      color:#e2c8ff;
+    }
+
+    @keyframes pulse{
+      0%,100%{box-shadow:0 0 22px rgba(181,108,255,.08)}
+      50%{box-shadow:0 0 35px rgba(181,108,255,.2)}
+    }
+
+    .poem-area{
+      text-align:center;
+      margin-top:35px;
+    }
+
+    .poem-label{
+      color:var(--muted);
+      font-size:.72rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .poem-button{
+      display:inline-block;
+      text-decoration:none;
+      color:#fff;
+      padding:14px 23px;
+      border-radius:999px;
+      border:1px solid rgba(181,108,255,.65);
+      background:rgba(181,108,255,.11);
+      box-shadow:0 0 18px rgba(181,108,255,.18);
+      font-size:.85rem;
+      letter-spacing:.5px;
+      transition:.3s ease;
+    }
+
+    .poem-button:hover{
+      transform:translateY(-3px);
+      background:rgba(181,108,255,.2);
+      box-shadow:0 0 28px rgba(181,108,255,.4);
+    }
+
+    .signature{
+      text-align:center;
+      margin-top:30px;
+      color:#88789d;
+      font-size:.68rem;
+      letter-spacing:2px;
+    }
+
+    @keyframes fade{
+      from{opacity:0}
+      to{opacity:1}
+    }
+
+    @media(max-width:480px){
+      .page{
+        width:94%;
+        padding-top:42px;
+      }
+
+      .relicario{
+        padding:25px 14px 28px;
+        border-radius:27px;
+      }
+
+      .letter{
+        padding:23px 16px;
+      }
+
+      .letter p{
+        font-size:1.2rem;
+        line-height:1.67;
+      }
+
+      .finale p{
+        font-size:1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="particles">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
+  <main class="page">
+
+    <section class="relicario">
+
+      <div class="date">Martes · 29 de septiembre · 2026</div>
+
+      <h1>✦ DONDE MI AMOR TE ESPERA DESDE EL PRIMER INSTANTE ✦</h1>
+
+      <p class="dedication">
+        <strong>Para mi pequeña eternidad de septiembre, Valeria.</strong>
+      </p>
+
+      <article class="letter">
+
+        <p>
+          Mañana, día veintinueve… casi la última carta de este mes en la que te escribo, preciosa. Y esta vez quería dejarte unas palabras con calma, porque desde la última vez no te había escrito como debía. Pensé que aquella carta necesitaba quedarse unos días descansando en tu alma, para que sintieras despacito todo lo que te amo.
+        </p>
+
+        <p>
+          Y mi niña, te lo digo desde lo más profundo de mí: <strong>a nuestro Noah lo voy a recordar todos los días</strong>, y algún día vas a darte cuenta de cuánto vive todavía en mi corazón y en el tuyo.
+        </p>
+
+        <p>
+          Ojalá mañana podamos pasar este día juntos. Y aunque quisiera poder quedarme contigo, dormir a tu lado y olvidarme por un momento de todas las despedidas, entiendo que todavía no podemos. Solo deseo que llegue pronto ese momento en que podamos quedarnos juntos sin tener que separarnos.
+        </p>
+
+        <p>
+          Mientras tanto, quiero que esta pequeña carta te acompañe donde sea que estés.
+        </p>
+
+        <p class="french">
+          Je t’aime tellement, mi niña hermosa.
+        </p>
+
+        <p>
+          Más de lo que a veces sé explicar y más de lo que cualquier carta podría alcanzar a decir.
+        </p>
+
+        <p>
+          Que tengamos un bonito día, preciosa.<br>
+          Y que, estés donde estés, sientas un pedacito de mi amor contigo. ❤️
+        </p>
+
+      </article>
+
+      <section class="finale">
+
+        <p>
+          Si alguna vez durante este día mi amor logra encontrarte en medio de tus pensamientos, recuerda que hay un corazón que te elige una y otra vez, que te guarda con una ternura inmensa y que desea algún día poder quedarse contigo sin despedidas, abrazándote hasta que el mundo deje de importar; y mientras ese momento llega, quiero que nuestro amor siga siendo ese pequeño lugar al que ambos podamos volver.
+        </p>
+
+        <p class="noah">
+          <strong>Et que le prince Noah, qui veille sur nous depuis le ciel, soit toujours avec nous, ma preciosa.</strong>
+        </p>
+
+        <p class="neon">
+          TE AMO MUCHÍSIMO VALERIA PETRO VILLAZÓN
+        </p>
+
+      </section>
+
+      <div class="poem-area">
+        <div class="poem-label">Un pequeño pedacito más de mi amor</div>
+
+        <!-- Cambia "poema-29-septiembre.html" por el nombre real del HTML del poema -->
+        <a class="poem-button" href="https://j8753741-eng.github.io/Martes-29-de-septiembre-del-2026---poema/">
+          ✦ Abrir el poema de esta mañana ✦
+        </a>
+      </div>
+
+      <div class="signature">
+        Hecho para encontrarte desde el primer instante de tu día.
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+      </html>
